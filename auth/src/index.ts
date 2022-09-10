@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 
 const start = async () => {
   try {
+    console.log("Starting .....");
     await mongoose.connect("mongodb://auth-mongo-srv:27017/auth");
     console.log("connection established with mongodb://auth-mongo-srv:27017");
   } catch (error) {
