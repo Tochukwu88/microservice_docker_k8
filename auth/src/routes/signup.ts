@@ -4,7 +4,7 @@ import { RequestValidationError } from "../errors/request-validation-error";
 import { User } from "../models/User";
 import { BadRequestError } from "../errors/bad-request-error";
 import jwt from "jsonwebtoken";
-const JWT_SECRET = "SCDSXCDD";
+
 const router = express.Router();
 
 router.post(
@@ -38,7 +38,7 @@ router.post(
         id: user.id,
         email: user.email,
       },
-      JWT_SECRET
+      process.env.JWT_SECRET!
     );
 
     // Store it on session object

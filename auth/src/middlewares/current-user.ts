@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
-const JWT_SECRET = "SCDSXCDD";
+
 interface UserPayload {
   id: string;
   email: string;
@@ -24,7 +24,10 @@ export const currentUser = (
   }
 
   try {
-    const payload = jwt.verify(req.session.jwt, JWT_SECRET) as UserPayload;
+    const payload = jwt.verify(
+      req.session.jwt,
+      process.env.JWT_SECRET!
+    ) as UserPayload;
     req.currentUser = payload;
   } catch (err) {}
 

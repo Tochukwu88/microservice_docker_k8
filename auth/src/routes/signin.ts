@@ -6,7 +6,7 @@ import { Password } from "../services/password";
 import { User } from "../models/User";
 import { validateRequest } from "../middlewares/validate-request";
 import { BadRequestError } from "../errors/bad-request-error";
-const JWT_SECRET = "SCDSXCDD";
+
 const router = express.Router();
 
 router.post(
@@ -41,7 +41,7 @@ router.post(
         id: existingUser.id,
         email: existingUser.email,
       },
-      JWT_SECRET
+      process.env.JWT_SECRET!
     );
 
     // Store it on session object
